@@ -36,7 +36,7 @@
             imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT),
             particle, scale,
             x2d, y2d, c, amplitude;
-        amplitude = 10;
+        amplitude = 100;
 
         for (var i = 0; i < len; i++) {
             particle = particles[i];
