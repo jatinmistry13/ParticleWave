@@ -22,6 +22,12 @@
         HEIGHT = canvas.height = window.innerHeight,
         particles = [];
 
+    for (var x = -300; x < 300; x += 5) {
+        for (var z = -250; z < 250; z += 5) {
+            particles.push({x: x, y: 100, z: z});
+        }
+    }
+
     // Render the canvas context
     function render(time_elapsed) {
         //TODO
