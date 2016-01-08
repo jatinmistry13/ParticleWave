@@ -30,7 +30,21 @@
 
     // Render the canvas context
     function render(time_elapsed) {
-        //TODO
+        
+        var len = particles.length,
+            fov = 250,
+            particle, scale,
+            x2d, y2d, c;
+
+        for (var i = 0; i < len; i++) {
+            particle = particles[i];
+
+            particle.x = 20;
+            particle.y = 20;
+            particle.z = 20;
+
+        }
+
     }
 
     // Take a screenshot
