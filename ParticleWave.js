@@ -1,5 +1,5 @@
 /**
- * Create a Particles Emitter system on canvas through javascript.
+ * Create a Particle Wave system on canvas through javascript.
  * @author Jatin Mistry
  */
  
