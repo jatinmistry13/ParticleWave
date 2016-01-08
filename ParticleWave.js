@@ -33,18 +33,30 @@
         
         var len = particles.length,
             fov = 250,
+            imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT),
             particle, scale,
-            x2d, y2d, c;
+            x2d, y2d, c, amplitude;
+        amplitude = 10;
 
         for (var i = 0; i < len; i++) {
             particle = particles[i];
+            scale = fov / (fov + particle.z);
+            x2d = particle.x * scale + WIDTH / 2;
+            y2d = particle.y * scale + HEIGHT / 2;
+            if(x2d >= 0 && x2d <= WIDTH && y2d >= 0 && y2d <= HEIGHT) {
+                c = (Math.round(y2d) * imageData.width + Math.round(x2d)) * 4;
+                imageData.data[c] = 0;                // red
+                imageData.data[c + 1] = 204;          // green
+                imageData.data[c + 2] = 255;          // blue
+                imageData.data[c + 3] = 255;          // alpha
+            }
+            particle.z -= 0.4;
 
-            particle.x = 20;
-            particle.y = 20;
-            particle.z = 20;
-
+            particle.y = HEIGHT / 14 + Math.sin(i / len * 15 + (time_elapsed / 1000)) * amplitude;
+            if (particle.z < -fov)
+                particle.z += 2 * fov;
         }
-
+        ctx.putImageData(imageData, 0, 0);
     }
 
     // Take a screenshot
